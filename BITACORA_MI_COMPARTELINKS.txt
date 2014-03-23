@@ -1,0 +1,113 @@
+ADAPTACION APLICACION COMPARTE LINK A POO.
+
+RESULTADO FINAL TODO OK
+
+le readapte la caracteristica de OLVIDO SU CONTRASEÑA?? que no estaba en la veriosn poo que nos bajamos.
+
+QUEDA PENDIENTE.
+subir la aplicacion a un hosting remoto para probar el envio de notificacion por email.
+
+
+ASPECTOS IMPORTANTES
+
+LA EXTENSION MYSQLI
+
+como la aplicacion bajada en poo venia con PROCEDIMIENTOS ALMACENADOS, entonces toda esta hecha para la extension Mysqli
+mi local host la tenia y por eso todo ok
+
+en el archivo de conexion Conexion.php tambien trabaja un objeto tipo mysqli, tengo la inquietud si todos los hosting tienen habilitada esa extensión, y si pudioera haber algun problema respecto a este tema.
+
+
+EL ARCHIVO DE CONEXION CON LA DB...
+
+*****************************************************************************************************************************
+*****************************************************************************************************************************
+EN LA CARPETA mio/class/Conexion.php
+
+
+	USANDO EL OBJETO MYSQLI...
+	
+	//Metodo Estatico que permite conectarnos a una Bd en particular.
+    	public static  function db_connect() 
+
+	{
+		//Instancia objeto de la clase mysqli, le pasamos en el constructor 
+		//Nombre del Server, Usuario y contraseña.
+        	$mysqli= new mysqli('localhost','elvis','siouxsie');
+		
+		//Seleccionamos la BD a la cual nos vamos a conectar.
+        	$mysqli->select_db('compartelinks');
+        
+		//Retornamos el objeto mysqli.
+        	return $mysqli;     
+    	}
+
+
+
+EL QUE TENEMOS EN EL PROYECTO CARMILA PARA PROGRAMACION LINEAL...
+
+
+    	/*conexion con la base de datos*/
+	$conexion = mysql_connect("localhost","elvis","siouxsie")or die("No se pudo conectar a la base de datos");
+
+	/*esto es para tildes y eñes al abrir la conexion en la DB*/
+	mysql_query("SET NAMES 'utf8'");
+
+	/*seleccion de base de datos a usar*/
+	mysql_select_db("carlota");
+
+
+
+EL QUE TENEMOS EN EL PROYECTO CRUDPOO...
+
+
+	public static function conectarDB() 
+	{
+		$conexion=mysql_connect("localhost","elvis","siouxsie") or die("No se pudo conectar a la base de datos");
+		/*esto es para tildes y eñes al abrir la conexion en la DB*/
+		mysql_query("SET NAMES 'utf8'");
+		mysql_select_db("crudpoo");
+		return $conexion;
+	}
+
+
+
+
+*****************************************************************************************************************************
+*****************************************************************************************************************************
+
+EL ARCHIVO DICCIONARIO.
+
+se encuentra en la carpeta diccionario y es llamado desde el metodo que obtiene nuestra palabra aleatoria para resetear la contraseña $word manejamos la funcion fopen() en modo lectura.
+
+
+
+
+RECUPERAR UN POSIBLE ERROR DE PETICION MYSQL.. 
+
+se hace de esta forma.
+
+$sqlconsulta = "select * from librodevisitas";		
+		$resultado = $conexion->query("$sqlconsulta")
+		or die("Peticion sql redactada: $sqlconsulta <br />Error encontrado: " . $conexion->error);
+
+
+CONCLUSION FINAL TODO OK
+
+
+*****************************************************************************************************************************
+**********************************************************************************************************************************************************************************************************************************************************
+*****************************************************************************************************************************
+
+OJO AQUI!!!
+
+SE DEBE ACTUALIZAREL PROYECTO CRUDPOO YA QUE CON LO APRENDIDO AQUI EN EL PROYECTO COMPARTELINKS LOGRAMOS ACTUALIZAR LA CLASE UTILIZANDO EL OBJETO MYSQLI !!!!!!!
+
+Y QUEDO PERFECTO!!!!!
+
+
+TENERLO MUY EN CUENTA!!!!
+
+*****************************************************************************************************************************
+**********************************************************************************************************************************************************************************************************************************************************
+*****************************************************************************************************************************

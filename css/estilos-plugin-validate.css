@@ -1,0 +1,23 @@
+div {
+    margin-top: 12px;
+}
+div label.campo{
+  width: 25%;
+  float: left;
+}
+input[type=submit]{
+    margin-left: 150px;
+    margin-top: 20px;
+}
+fieldset{
+    width: 50%;
+}
+label.error{
+    color:#FF0000;
+    background-image: url(img/error.png);
+    background-repeat: no-repeat;
+    padding-left: 20px;
+}
+input.error{
+	background-color: #FF9F99;
+}
